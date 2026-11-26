@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-11-25T18:00:00",
+  "records": [
+    {
+      "record_id": "DTF-0001",
+      "text": "ERROR 504: Upstream gateway timeout on /api/v2/checkout",
+      "category": "Log",
+      "source": "Server Telemetry",
+      "priority": 5,
+      "due_date": "2026-11-10",
+      "notes": "First recorded checkout gateway timeout",
+      "created_at": "2026-11-20T09:15:00"
+    },
+    {
+      "record_id": "DTF-0002",
+      "text": "alice.chen@example.com",
+      "category": "Customer",
+      "source": "CRM Export",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Primary newsletter subscriber",
+      "created_at": "2026-11-20T10:05:00"
+    },
+    {
+      "record_id": "DTF-0003",
+      "text": "SKU-88412 | Wireless Ergonomic Mouse",
+      "category": "Inventory",
+      "source": "Warehouse Scan",
+      "priority": 2,
+      "due_date": "2026-12-15",
+      "notes": "Bin A-14 stock item",
+      "created_at": "2026-11-20T11:20:00"
+    },
+    {
+      "record_id": "DTF-0004",
+      "text": "Password reset token expired for user session",
+      "category": "Support",
+      "source": "Helpdesk Ticket",
+      "priority": 4,
+      "due_date": "2026-11-28",
+      "notes": "Ticket #4419",
+      "created_at": "2026-11-20T13:45:00"
+    },
+    {
+      "record_id": "DTF-0005",
+      "text": "Alice.Chen@example.com",
+      "category": "Customer",
+      "source": "Web Signup",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Case-variant email (not exact duplicate)",
+      "created_at": "2026-11-20T14:10:00"
+    },
+    {
+      "record_id": "DTF-0006",
+      "text": "Quarterly security audit completed with zero findings",
+      "category": "Document",
+      "source": "Compliance Portal",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Q3 archival record",
+      "created_at": "2026-11-20T16:00:00"
+    },
+    {
+      "record_id": "DTF-0007",
+      "text": "ERROR 504: Upstream gateway timeout on /api/v2/checkout",
+      "category": "Log",
+      "source": "Server Telemetry",
+      "priority": 5,
+      "due_date": "2026-11-10",
+      "notes": "Repeated timeout burst",
+      "created_at": "2026-11-21T08:30:00"
+    },
+    {
+      "record_id": "DTF-0008",
+      "text": "Invoice #INV-2026-0912 pending approval",
+      "category": "Finance",
+      "source": "Billing Queue",
+      "priority": 5,
+      "due_date": "2026-11-15",
+      "notes": "Vendor batch review",
+      "created_at": "2026-11-21T09:12:00"
+    },
+    {
+      "record_id": "DTF-0009",
+      "text": "SKU-90210 | Mechanical Keyboard USB-C",
+      "category": "Inventory",
+      "source": "Warehouse Scan",
+      "priority": 2,
+      "due_date": "2026-12-20",
+      "notes": "Restocked shelf B-03",
+      "created_at": "2026-11-21T10:40:00"
+    },
+    {
+      "record_id": "DTF-0010",
+      "text": "OK",
+      "category": "General",
+      "source": "Health Ping",
+      "priority": 1,
+      "due_date": "",
+      "notes": "Short boundary status token",
+      "created_at": "2026-11-21T11:00:00"
+    },
+    {
+      "record_id": "DTF-0011",
+      "text": "marcus.rivera@northstar.org",
+      "category": "Email",
+      "source": "Mailing List",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Partner contact",
+      "created_at": "2026-11-21T12:15:00"
+    },
+    {
+      "record_id": "DTF-0012",
+      "text": "Verify quarterly backup integrity checklist",
+      "category": "Document",
+      "source": "Ops Runbook",
+      "priority": 4,
+      "due_date": "2026-12-01",
+      "notes": "SOP-19 revision A",
+      "created_at": "2026-11-21T14:05:00"
+    },
+    {
+      "record_id": "DTF-0013",
+      "text": "alice.chen@example.com",
+      "category": "Email",
+      "source": "Marketing Sync",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Exact duplicate across category",
+      "created_at": "2026-11-21T15:25:00"
+    },
+    {
+      "record_id": "DTF-0014",
+      "text": "SKU-88412 | wireless ergonomic mouse",
+      "category": "Inventory",
+      "source": "Manual Entry",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Lowercase variant (distinct from DTF-0003)",
+      "created_at": "2026-11-21T16:50:00"
+    },
+    {
+      "record_id": "DTF-0015",
+      "text": "WARN 429: Rate limit exceeded for tenant_id=408",
+      "category": "Log",
+      "source": "API Gateway",
+      "priority": 4,
+      "due_date": "",
+      "notes": "Throttling alert",
+      "created_at": "2026-11-22T08:10:00"
+    },
+    {
+      "record_id": "DTF-0016",
+      "text": "Customer requested VAT invoice copy for order #7731",
+      "category": "Support",
+      "source": "Helpdesk Ticket",
+      "priority": 3,
+      "due_date": "2026-12-05",
+      "notes": "Assigned to billing desk",
+      "created_at": "2026-11-22T09:45:00"
+    },
+    {
+      "record_id": "DTF-0017",
+      "text": "ERROR 504: Upstream gateway timeout on /api/v2/checkout",
+      "category": "Log",
+      "source": "Server Telemetry",
+      "priority": 5,
+      "due_date": "2026-11-10",
+      "notes": "Third occurrence during peak traffic",
+      "created_at": "2026-11-22T11:30:00"
+    },
+    {
+      "record_id": "DTF-0018",
+      "text": "Café résumé — Q4 audit & €2,500 reconciliation [approved]",
+      "category": "Finance",
+      "source": "Ledger Import",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Unicode and punctuation edge case",
+      "created_at": "2026-11-22T13:05:00"
+    },
+    {
+      "record_id": "DTF-0019",
+      "text": "SKU-88412 | Wireless Ergonomic Mouse",
+      "category": "Inventory",
+      "source": "Audit Sheet",
+      "priority": 2,
+      "due_date": "2026-12-15",
+      "notes": "Duplicate catalog entry",
+      "created_at": "2026-11-22T14:20:00"
+    },
+    {
+      "record_id": "DTF-0020",
+      "text": "A",
+      "category": "General",
+      "source": "Boundary Test",
+      "priority": 1,
+      "due_date": "",
+      "notes": "Minimum 1-character boundary value",
+      "created_at": "2026-11-22T15:10:00"
+    },
+    {
+      "record_id": "DTF-0021",
+      "text": "Password reset token expired for user session",
+      "category": "Support",
+      "source": "Helpdesk Ticket",
+      "priority": 4,
+      "due_date": "2026-11-28",
+      "notes": "Ticket #4482",
+      "created_at": "2026-11-22T17:00:00"
+    },
+    {
+      "record_id": "DTF-0022",
+      "text": "  Pending Review  ",
+      "category": "General",
+      "source": "Legacy Export",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Leading/trailing spaces boundary condition",
+      "created_at": "2026-11-23T08:05:00"
+    },
+    {
+      "record_id": "DTF-0023",
+      "text": "Pending Review",
+      "category": "General",
+      "source": "Manual Entry",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Clean version without outer spaces",
+      "created_at": "2026-11-23T08:15:00"
+    },
+    {
+      "record_id": "DTF-0024",
+      "text": "Invoice #INV-2026-0912 pending approval",
+      "category": "Finance",
+      "source": "Billing Queue",
+      "priority": 5,
+      "due_date": "2026-11-15",
+      "notes": "Duplicate invoice submission",
+      "created_at": "2026-11-23T09:50:00"
+    },
+    {
+      "record_id": "DTF-0025",
+      "text": "priya.nair@civicdata.in",
+      "category": "Customer",
+      "source": "CRM Export",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Active regional coordinator",
+      "created_at": "2026-11-23T11:00:00"
+    },
+    {
+      "record_id": "DTF-0026",
+      "text": "Verify quarterly backup integrity checklist.",
+      "category": "Document",
+      "source": "Ops Runbook",
+      "priority": 4,
+      "due_date": "2026-12-01",
+      "notes": "Trailing period differs from DTF-0012",
+      "created_at": "2026-11-23T12:30:00"
+    },
+    {
+      "record_id": "DTF-0027",
+      "text": "alice.chen@example.com",
+      "category": "Customer",
+      "source": "Event Registration",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Third exact occurrence",
+      "created_at": "2026-11-23T14:40:00"
+    },
+    {
+      "record_id": "DTF-0028",
+      "text": "Shipping manifest batch #SHP-3108 dispatched via Air Freight",
+      "category": "Inventory",
+      "source": "Logistics Feed",
+      "priority": 3,
+      "due_date": "2026-12-10",
+      "notes": "Carrier tracking synced",
+      "created_at": "2026-11-23T16:20:00"
+    },
+    {
+      "record_id": "DTF-0029",
+      "text": "INFO: Nightly PostgreSQL snapshot verified (checksum sha256:9f82a1)",
+      "category": "Log",
+      "source": "Backup Daemon",
+      "priority": 1,
+      "due_date": "",
+      "notes": "Routine nightly job",
+      "created_at": "2026-11-24T02:00:00"
+    },
+    {
+      "record_id": "DTF-0030",
+      "text": "Comprehensive cross-department data deduplication standard operating procedure covering intake sanitization, exact string comparison boundaries, automated CSV/JSON backup verification, and weekly executive audit reporting across regional hubs.",
+      "category": "Document",
+      "source": "Policy Draft",
+      "priority": 3,
+      "due_date": "2026-12-31",
+      "notes": "Long-text statistical outlier boundary case",
+      "created_at": "2026-11-24T09:30:00"
+    },
+    {
+      "record_id": "DTF-0031",
+      "text": "ERROR 504: Upstream gateway timeout on /api/v2/checkout",
+      "category": "Log",
+      "source": "Server Telemetry",
+      "priority": 5,
+      "due_date": "2026-11-10",
+      "notes": "Fourth exact occurrence",
+      "created_at": "2026-11-24T10:45:00"
+    },
+    {
+      "record_id": "DTF-0032",
+      "text": "Verify quarterly backup integrity checklist",
+      "category": "Document",
+      "source": "Ops Runbook",
+      "priority": 4,
+      "due_date": "2026-12-01",
+      "notes": "Exact duplicate of DTF-0012",
+      "created_at": "2026-11-24T11:55:00"
+    },
+    {
+      "record_id": "DTF-0033",
+      "text": "Refund processed for transaction TXN-55901 ($48.50)",
+      "category": "Finance",
+      "source": "Payment Webhook",
+      "priority": 3,
+      "due_date": "",
+      "notes": "Completed refund",
+      "created_at": "2026-11-24T13:15:00"
+    },
+    {
+      "record_id": "DTF-0034",
+      "text": "Two-factor authentication SMS delayed for international numbers",
+      "category": "Support",
+      "source": "Helpdesk Ticket",
+      "priority": 4,
+      "due_date": "2026-11-24",
+      "notes": "Overdue escalation item",
+      "created_at": "2026-11-24T14:50:00"
+    },
+    {
+      "record_id": "DTF-0035",
+      "text": "SKU-77105 | Adjustable Laptop Stand Aluminum",
+      "category": "Product",
+      "source": "Catalog Sync",
+      "priority": 2,
+      "due_date": "",
+      "notes": "New Q4 SKU",
+      "created_at": "2026-11-24T16:10:00"
+    },
+    {
+      "record_id": "DTF-0036",
+      "text": "noreply@updates.civictools.org",
+      "category": "Email",
+      "source": "SMTP Config",
+      "priority": 1,
+      "due_date": "",
+      "notes": "System sender address",
+      "created_at": "2026-11-25T08:00:00"
+    },
+    {
+      "record_id": "DTF-0037",
+      "text": "Reconcile vendor tax certificates before fiscal close",
+      "category": "Finance",
+      "source": "Manual Entry",
+      "priority": 5,
+      "due_date": "2026-11-20",
+      "notes": "Overdue high-priority task",
+      "created_at": "2026-11-25T09:20:00"
+    },
+    {
+      "record_id": "DTF-0038",
+      "text": "Exported CSV report missing UTF-8 BOM on older spreadsheet tool",
+      "category": "Support",
+      "source": "Bug Tracker",
+      "priority": 3,
+      "due_date": "2026-12-08",
+      "notes": "Fixed in release 1.2",
+      "created_at": "2026-11-25T11:10:00"
+    },
+    {
+      "record_id": "DTF-0039",
+      "text": "SKU-77105 | Adjustable Laptop Stand Aluminum — Matte Black",
+      "category": "Product",
+      "source": "Catalog Sync",
+      "priority": 2,
+      "due_date": "",
+      "notes": "Variant product description",
+      "created_at": "2026-11-25T13:35:00"
+    },
+    {
+      "record_id": "DTF-0040",
+      "text": "Annual community hackathon volunteer onboarding packet",
+      "category": "General",
+      "source": "Program Team",
+      "priority": 3,
+      "due_date": "2026-12-18",
+      "notes": "Final sample dataset entry",
+      "created_at": "2026-11-25T15:45:00"
+    }
+  ]
+}

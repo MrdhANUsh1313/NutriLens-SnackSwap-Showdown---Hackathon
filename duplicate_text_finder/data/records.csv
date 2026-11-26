@@ -1,0 +1,41 @@
+record_id,text,category,source,priority,due_date,notes,created_at
+DTF-0001,ERROR 504: Upstream gateway timeout on /api/v2/checkout,Log,Server Telemetry,5,2026-11-10,First recorded checkout gateway timeout,2026-11-20T09:15:00
+DTF-0002,alice.chen@example.com,Customer,CRM Export,3,,Primary newsletter subscriber,2026-11-20T10:05:00
+DTF-0003,SKU-88412 | Wireless Ergonomic Mouse,Inventory,Warehouse Scan,2,2026-12-15,Bin A-14 stock item,2026-11-20T11:20:00
+DTF-0004,Password reset token expired for user session,Support,Helpdesk Ticket,4,2026-11-28,Ticket #4419,2026-11-20T13:45:00
+DTF-0005,Alice.Chen@example.com,Customer,Web Signup,3,,Case-variant email (not exact duplicate),2026-11-20T14:10:00
+DTF-0006,Quarterly security audit completed with zero findings,Document,Compliance Portal,2,,Q3 archival record,2026-11-20T16:00:00
+DTF-0007,ERROR 504: Upstream gateway timeout on /api/v2/checkout,Log,Server Telemetry,5,2026-11-10,Repeated timeout burst,2026-11-21T08:30:00
+DTF-0008,Invoice #INV-2026-0912 pending approval,Finance,Billing Queue,5,2026-11-15,Vendor batch review,2026-11-21T09:12:00
+DTF-0009,SKU-90210 | Mechanical Keyboard USB-C,Inventory,Warehouse Scan,2,2026-12-20,Restocked shelf B-03,2026-11-21T10:40:00
+DTF-0010,OK,General,Health Ping,1,,Short boundary status token,2026-11-21T11:00:00
+DTF-0011,marcus.rivera@northstar.org,Email,Mailing List,2,,Partner contact,2026-11-21T12:15:00
+DTF-0012,Verify quarterly backup integrity checklist,Document,Ops Runbook,4,2026-12-01,SOP-19 revision A,2026-11-21T14:05:00
+DTF-0013,alice.chen@example.com,Email,Marketing Sync,3,,Exact duplicate across category,2026-11-21T15:25:00
+DTF-0014,SKU-88412 | wireless ergonomic mouse,Inventory,Manual Entry,2,,Lowercase variant (distinct from DTF-0003),2026-11-21T16:50:00
+DTF-0015,WARN 429: Rate limit exceeded for tenant_id=408,Log,API Gateway,4,,Throttling alert,2026-11-22T08:10:00
+DTF-0016,Customer requested VAT invoice copy for order #7731,Support,Helpdesk Ticket,3,2026-12-05,Assigned to billing desk,2026-11-22T09:45:00
+DTF-0017,ERROR 504: Upstream gateway timeout on /api/v2/checkout,Log,Server Telemetry,5,2026-11-10,Third occurrence during peak traffic,2026-11-22T11:30:00
+DTF-0018,"Café résumé — Q4 audit & €2,500 reconciliation [approved]",Finance,Ledger Import,3,,Unicode and punctuation edge case,2026-11-22T13:05:00
+DTF-0019,SKU-88412 | Wireless Ergonomic Mouse,Inventory,Audit Sheet,2,2026-12-15,Duplicate catalog entry,2026-11-22T14:20:00
+DTF-0020,A,General,Boundary Test,1,,Minimum 1-character boundary value,2026-11-22T15:10:00
+DTF-0021,Password reset token expired for user session,Support,Helpdesk Ticket,4,2026-11-28,Ticket #4482,2026-11-22T17:00:00
+DTF-0022,  Pending Review  ,General,Legacy Export,2,,Leading/trailing spaces boundary condition,2026-11-23T08:05:00
+DTF-0023,Pending Review,General,Manual Entry,2,,Clean version without outer spaces,2026-11-23T08:15:00
+DTF-0024,Invoice #INV-2026-0912 pending approval,Finance,Billing Queue,5,2026-11-15,Duplicate invoice submission,2026-11-23T09:50:00
+DTF-0025,priya.nair@civicdata.in,Customer,CRM Export,3,,Active regional coordinator,2026-11-23T11:00:00
+DTF-0026,Verify quarterly backup integrity checklist.,Document,Ops Runbook,4,2026-12-01,Trailing period differs from DTF-0012,2026-11-23T12:30:00
+DTF-0027,alice.chen@example.com,Customer,Event Registration,3,,Third exact occurrence,2026-11-23T14:40:00
+DTF-0028,Shipping manifest batch #SHP-3108 dispatched via Air Freight,Inventory,Logistics Feed,3,2026-12-10,Carrier tracking synced,2026-11-23T16:20:00
+DTF-0029,INFO: Nightly PostgreSQL snapshot verified (checksum sha256:9f82a1),Log,Backup Daemon,1,,Routine nightly job,2026-11-24T02:00:00
+DTF-0030,"Comprehensive cross-department data deduplication standard operating procedure covering intake sanitization, exact string comparison boundaries, automated CSV/JSON backup verification, and weekly executive audit reporting across regional hubs.",Document,Policy Draft,3,2026-12-31,Long-text statistical outlier boundary case,2026-11-24T09:30:00
+DTF-0031,ERROR 504: Upstream gateway timeout on /api/v2/checkout,Log,Server Telemetry,5,2026-11-10,Fourth exact occurrence,2026-11-24T10:45:00
+DTF-0032,Verify quarterly backup integrity checklist,Document,Ops Runbook,4,2026-12-01,Exact duplicate of DTF-0012,2026-11-24T11:55:00
+DTF-0033,Refund processed for transaction TXN-55901 ($48.50),Finance,Payment Webhook,3,,Completed refund,2026-11-24T13:15:00
+DTF-0034,Two-factor authentication SMS delayed for international numbers,Support,Helpdesk Ticket,4,2026-11-24,Overdue escalation item,2026-11-24T14:50:00
+DTF-0035,SKU-77105 | Adjustable Laptop Stand Aluminum,Product,Catalog Sync,2,,New Q4 SKU,2026-11-24T16:10:00
+DTF-0036,noreply@updates.civictools.org,Email,SMTP Config,1,,System sender address,2026-11-25T08:00:00
+DTF-0037,Reconcile vendor tax certificates before fiscal close,Finance,Manual Entry,5,2026-11-20,Overdue high-priority task,2026-11-25T09:20:00
+DTF-0038,Exported CSV report missing UTF-8 BOM on older spreadsheet tool,Support,Bug Tracker,3,2026-12-08,Fixed in release 1.2,2026-11-25T11:10:00
+DTF-0039,SKU-77105 | Adjustable Laptop Stand Aluminum — Matte Black,Product,Catalog Sync,2,,Variant product description,2026-11-25T13:35:00
+DTF-0040,Annual community hackathon volunteer onboarding packet,General,Program Team,3,2026-12-18,Final sample dataset entry,2026-11-25T15:45:00

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duplicate Text Finder — Project #106 | Python for Good</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Left Menu-Driven Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Menu">
+      <div class="brand-block">
+        <div class="brand-badge">DTF · #106</div>
+        <h1 class="brand-title">Duplicate Text Finder</h1>
+        <p class="brand-subtitle">Python for Good · Productivity Utility</p>
+      </div>
+
+      <nav class="nav-menu" aria-label="Application Operations">
+        <div class="nav-section-label">Main Menu</div>
+        <button class="nav-item active" data-view="welcome" type="button">
+          <span class="nav-num">1</span>
+          <span class="nav-text">Welcome &amp; Overview</span>
+        </button>
+        <button class="nav-item" data-view="add" type="button">
+          <span class="nav-num">2</span>
+          <span class="nav-text">Add &amp; Validate Entry</span>
+        </button>
+        <button class="nav-item" data-view="detect" type="button">
+          <span class="nav-num">3</span>
+          <span class="nav-text">Duplicate Detection</span>
+        </button>
+        <button class="nav-item" data-view="records" type="button">
+          <span class="nav-num">4</span>
+          <span class="nav-text">Search &amp; Records</span>
+        </button>
+        <button class="nav-item" data-view="analytics" type="button">
+          <span class="nav-num">5</span>
+          <span class="nav-text">Analytics &amp; Charts</span>
+        </button>
+        <button class="nav-item" data-view="io" type="button">
+          <span class="nav-num">6</span>
+          <span class="nav-text">Bulk Import &amp; Export</span>
+        </button>
+        <button class="nav-item" data-view="settings" type="button">
+          <span class="nav-num">7</span>
+          <span class="nav-text">Storage &amp; Thresholds</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-pill" id="sidebar-storage-pill">
+          <span class="dot dot-ok"></span>
+          <span id="sidebar-record-count">Loading records...</span>
+        </div>
+        <div class="stack-note">Flask · CSV · JSON · Matplotlib</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle Menu">&#9776;</button>
+          <div>
+            <h2 class="page-heading" id="page-heading">Welcome to Duplicate Text Finder</h2>
+            <p class="page-subheading" id="page-subheading">Compare text entries, catch exact duplicates, validate records, and analyze local CSV/JSON datasets.</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-chip" id="global-status-chip">Checking status...</span>
+          <button class="btn btn-outline btn-sm" id="btn-refresh-all" type="button">Refresh Data</button>
+        </div>
+      </header>
+
+      <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+      <main class="content-area">
+        <!-- VIEW 1: WELCOME SCREEN -->
+        <section class="view active" id="view-welcome">
+          <div class="hero-card">
+            <div class="hero-copy">
+              <span class="eyebrow">Hackathon Project #106 · Digital Tools &amp; Productivity</span>
+              <h3>Find Exact Text Duplicates Without Spreadsheet Chaos</h3>
+              <p>
+                Duplicate Text Finder validates incoming text records, compares entries using strict exact matching,
+                persists every change locally to synchronized <code>records.csv</code> and <code>records.json</code> files,
+                and generates live analytics, Matplotlib charts, threshold warnings, and multi-format audit reports.
+              </p>
+              <div class="hero-cta-row">
+                <button class="btn btn-primary" data-goto="add" type="button">+ Add New Text Entry</button>
+                <button class="btn btn-secondary" data-goto="detect" type="button">Run Exact Duplicate Scan</button>
+                <button class="btn btn-outline" data-goto="analytics" type="button">View Analytics &amp; Charts</button>
+              </div>
+            </div>
+            <div class="hero-stats-panel">
+              <div class="mini-kpi">
+                <span class="mini-kpi-label">Stored Records</span>
+                <strong class="mini-kpi-val" id="welcome-total">-</strong>
+              </div>
+              <div class="mini-kpi">
+                <span class="mini-kpi-label">Unique Entries</span>
+                <strong class="mini-kpi-val text-teal" id="welcome-unique">-</strong>
+              </div>
+              <div class="mini-kpi">
+                <span class="mini-kpi-label">Exact Duplicate Rows</span>
+                <strong class="mini-kpi-val text-red" id="welcome-duplicates">-</strong>
+              </div>
+              <div class="mini-kpi">
+                <span class="mini-kpi-label">Active Warnings</span>
+                <strong class="mini-kpi-val text-amber" id="welcome-warnings">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-two">
+            <div class="card">
+              <div class="card-header">
+                <h4>Guided Menu Shortcuts</h4>
+                <span class="badge badge-blue">Beginner Friendly</span>
+              </div>
+              <div class="shortcut-grid">
+                <button class="shortcut-tile" data-goto="add" type="button">
+                  <strong>2. Add &amp; Validate</strong>
+                  <span>Submit entries with real-time defensive type &amp; boundary checks.</span>
+                </button>
+                <button class="shortcut-tile" data-goto="detect" type="button">
+                  <strong>3. Duplicate Engine</strong>
+                  <span>Scan stored records or compare pasted multi-line lists and files.</span>
+                </button>
+                <button class="shortcut-tile" data-goto="records" type="button">
+                  <strong>4. Query &amp; Search</strong>
+                  <span>Filter by keyword, category, duplicate status, and paginate results.</span>
+                </button>
+                <button class="shortcut-tile" data-goto="io" type="button">
+                  <strong>6. Import &amp; Export</strong>
+                  <span>Bulk CSV import with row error logs + MD/TXT/CSV report exports.</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4>7-Step Demonstration Walkthrough</h4>
+                <span class="badge badge-teal">Ready to Verify</span>
+              </div>
+              <ol class="walkthrough-list">
+                <li><strong>Launch App:</strong> You are on the branded welcome screen with live CSV/JSON state.</li>
+                <li><strong>Add Entry:</strong> Open <em>Add &amp; Validate Entry</em> to save a new text record.</li>
+                <li><strong>Test Validation:</strong> Click any invalid-input preset or submit blank/bad data to verify graceful error recovery.</li>
+                <li><strong>Detect Duplicates:</strong> Run <em>Duplicate Detection</em> to separate exact duplicates from unique entries.</li>
+                <li><strong>View Analytics:</strong> Inspect live summary tables, warnings, and Matplotlib charts.</li>
+                <li><strong>Verify Persistence:</strong> Restart Flask and confirm new records remain in <code>data/records.csv</code> &amp; <code>data/records.json</code>.</li>
+                <li><strong>Export Report:</strong> Download or preview Markdown, Plain-Text, or CSV reports.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: ADD & VALIDATE ENTRY -->
+        <section class="view" id="view-add">
+          <div class="grid-two-wide">
+            <div class="card">
+              <div class="card-header">
+                <h4>Submit New Text Entry</h4>
+                <span class="badge badge-blue">Defensive Validation</span>
+              </div>
+              <form id="add-record-form" novalidate>
+                <div id="add-form-banner" class="form-banner hidden"></div>
+
+                <div class="form-group">
+                  <label for="input-text">Text Entry <span class="req">*</span></label>
+                  <textarea id="input-text" name="text" rows="3" placeholder="Enter exact text string (1–2000 characters, non-blank)..." required></textarea>
+                  <div class="field-hint">Exact comparison is case-sensitive and whitespace-sensitive.</div>
+                  <div class="field-error" id="err-text"></div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="input-category-select">Category <span class="req">*</span></label>
+                    <select id="input-category-select" name="category_select">
+                      {% for cat in default_categories %}
+                      <option value="{{ cat }}">{{ cat }}</option>
+                      {% endfor %}
+                      <option value="__custom__">Custom Category...</option>
+                    </select>
+                    <input type="text" id="input-category-custom" class="hidden mt-sm" placeholder="2–40 chars (letters, numbers, spaces, -, _)">
+                    <div class="field-error" id="err-category"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="input-priority">Priority (1–5) <span class="req">*</span></label>
+                    <input type="text" id="input-priority" name="priority" value="3" placeholder="Whole number 1 to 5">
+                    <div class="field-hint">1 = Low, 3 = Standard, 5 = Critical</div>
+                    <div class="field-error" id="err-priority"></div>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="input-source">Source</label>
+                    <input type="text" id="input-source" name="source" value="Manual Entry" placeholder="e.g. Manual Entry, CRM Export">
+                    <div class="field-error" id="err-source"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="input-due-date">Due Date (Optional)</label>
+                    <input type="text" id="input-due-date" name="due_date" placeholder="YYYY-MM-DD (e.g. 2026-12-31)">
+                    <div class="field-hint">Used for overdue deadline threshold checks.</div>
+                    <div class="field-error" id="err-due_date"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-notes">Notes (Optional, max 300 chars)</label>
+                  <input type="text" id="input-notes" name="notes" placeholder="Optional context or reference tag">
+                  <div class="field-error" id="err-notes"></div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Validate &amp; Save Entry</button>
+                  <button type="button" class="btn btn-outline" id="btn-reset-add-form">Clear Form</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4>Validation Demo Helpers</h4>
+                <span class="badge badge-amber">Error Handling Test</span>
+              </div>
+              <p class="muted-text">
+                Click any test case below to populate invalid values and verify that the backend catches the error without crashing and lets you correct it.
+              </p>
+              <div class="preset-stack">
+                <button type="button" class="btn btn-outline btn-block preset-invalid" data-preset="blank">
+                  Test 1: Blank / Whitespace-Only Text
+                </button>
+                <button type="button" class="btn btn-outline btn-block preset-invalid" data-preset="bad-priority">
+                  Test 2: Non-Numeric / Out-of-Bounds Priority ("urgent" / 99)
+                </button>
+                <button type="button" class="btn btn-outline btn-block preset-invalid" data-preset="bad-date">
+                  Test 3: Invalid Calendar Date ("2026-02-30")
+                </button>
+                <button type="button" class="btn btn-outline btn-block preset-invalid" data-preset="bad-category">
+                  Test 4: Disallowed Category Characters ("Bad@Cat!")
+                </button>
+                <button type="button" class="btn btn-secondary btn-block preset-valid" data-preset="valid-dup">
+                  Fill Valid Exact Duplicate ("alice.chen@example.com")
+                </button>
+              </div>
+
+              <div id="add-result-card" class="result-callout hidden"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: DUPLICATE DETECTION ENGINE -->
+        <section class="view" id="view-detect">
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="detect-stored" type="button">Stored Dataset Scan</button>
+            <button class="tab-btn" data-tab="detect-batch" type="button">Ad-Hoc Batch / File Compare</button>
+          </div>
+
+          <div class="tab-panel active" id="tab-detect-stored">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h4>Exact Duplicate Detection — Stored Dataset</h4>
+                  <p class="muted-text">Compares all saved records in CSV/JSON storage using strict exact matching.</p>
+                </div>
+                <button class="btn btn-primary" id="btn-run-stored-detect" type="button">Run Exact Duplicate Scan</button>
+              </div>
+
+              <div class="kpi-row" id="stored-detect-kpis"></div>
+
+              <div id="stored-near-variants" class="alert-box hidden"></div>
+
+              <div class="sub-section">
+                <h5>1. Exact Duplicate Groups (Repeated Entries)</h5>
+                <div class="table-wrap">
+                  <table class="data-table" id="stored-dup-groups-table">
+                    <thead>
+                      <tr>
+                        <th>Group</th>
+                        <th>Count</th>
+                        <th>Exact Text</th>
+                        <th>Record IDs</th>
+                        <th>Categories</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="grid-two mt-md">
+                <div class="sub-section">
+                  <h5>2. Duplicate Entries (<span id="stored-dup-count">0</span>)</h5>
+                  <div class="table-wrap table-scroll">
+                    <table class="data-table" id="stored-dup-entries-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Count</th>
+                          <th>Category</th>
+                          <th>Text</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="sub-section">
+                  <h5>3. Unique Entries (<span id="stored-unique-count">0</span>)</h5>
+                  <div class="table-wrap table-scroll">
+                    <table class="data-table" id="stored-unique-entries-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Category</th>
+                          <th>Text</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab-detect-batch">
+            <div class="card">
+              <div class="card-header">
+                <h4>Compare Multi-Line Text List or Uploaded File</h4>
+                <span class="badge badge-blue">Modular Engine</span>
+              </div>
+              <form id="batch-compare-form" novalidate>
+                <div id="batch-form-banner" class="form-banner hidden"></div>
+                <div class="grid-two">
+                  <div class="form-group">
+                    <label for="batch-textarea">Paste Text Entries (one per line)</label>
+                    <textarea id="batch-textarea" rows="8" placeholder="Line 1&#10;Line 2&#10;Line 1&#10;line 1"></textarea>
+                    <div class="field-error" id="err-batch_text"></div>
+                  </div>
+                  <div>
+                    <div class="form-group">
+                      <label for="batch-file-input">Or Upload a Text / Log / CSV Line File</label>
+                      <input type="file" id="batch-file-input" accept=".txt,.log,.csv">
+                      <div class="field-hint">If a file is chosen, its lines will be compared instead of the text box.</div>
+                      <div class="field-error" id="err-batch_file"></div>
+                    </div>
+                    <div class="form-group">
+                      <label class="checkbox-label">
+                        <input type="checkbox" id="batch-save-checkbox">
+                        <span>Also save valid lines to local CSV &amp; JSON storage</span>
+                      </label>
+                    </div>
+                    <div class="form-row-2" id="batch-meta-row">
+                      <div class="form-group">
+                        <label for="batch-category">Category (if saving)</label>
+                        <select id="batch-category">
+                          {% for cat in default_categories %}
+                          <option value="{{ cat }}">{{ cat }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="batch-priority">Priority (if saving)</label>
+                        <input type="number" id="batch-priority" min="1" max="5" value="3">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-primary">Compare Entries</button>
+                      <button type="button" class="btn btn-outline" id="btn-batch-sample">Load Quick Example</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <div id="batch-results-area" class="hidden mt-md">
+                <div class="kpi-row" id="batch-detect-kpis"></div>
+                <div id="batch-near-variants" class="alert-box hidden"></div>
+                <div class="grid-two mt-md">
+                  <div class="sub-section">
+                    <h5>Duplicate Entries Found</h5>
+                    <div class="table-wrap table-scroll">
+                      <table class="data-table" id="batch-dup-table">
+                        <thead>
+                          <tr>
+                            <th>Count</th>
+                            <th>Exact Text</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="sub-section">
+                    <h5>Unique Entries Found</h5>
+                    <div class="table-wrap table-scroll">
+                      <table class="data-table" id="batch-unique-table">
+                        <thead>
+                          <tr>
+                            <th>Line #</th>
+                            <th>Exact Text</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: RECORDS EXPLORER & SEARCH -->
+        <section class="view" id="view-records">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h4>Record Query, Search &amp; Paginated Explorer</h4>
+                <p class="muted-text">Search across stored records by keyword, category, duplicate status, and priority.</p>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="filter-item filter-grow">
+                <label for="filter-keyword">Keyword Search</label>
+                <input type="text" id="filter-keyword" placeholder="Search text, ID, source, or notes...">
+              </div>
+              <div class="filter-item">
+                <label for="filter-category">Category</label>
+                <select id="filter-category">
+                  <option value="all">All Categories</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <label for="filter-status">Duplicate Status</label>
+                <select id="filter-status">
+                  <option value="all">All Entries</option>
+                  <option value="duplicate">Duplicates Only</option>
+                  <option value="unique">Unique Only</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <label for="filter-priority">Priority</label>
+                <select id="filter-priority">
+                  <option value="all">All</option>
+                  <option value="5">P5 (Critical)</option>
+                  <option value="4">P4 (High)</option>
+                  <option value="3">P3 (Normal)</option>
+                  <option value="2">P2 (Low)</option>
+                  <option value="1">P1 (Minimal)</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <label for="filter-sort">Sort By</label>
+                <select id="filter-sort">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="occurrences_desc">Most Repeated</option>
+                  <option value="priority_desc">Highest Priority</option>
+                  <option value="text_asc">Text (A–Z)</option>
+                </select>
+              </div>
+              <div class="filter-item">
+                <label for="filter-per-page">Rows / Page</label>
+                <select id="filter-per-page">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+              <div class="filter-actions">
+                <button class="btn btn-primary" id="btn-apply-filters" type="button">Search</button>
+                <button class="btn btn-outline" id="btn-clear-filters" type="button">Reset</button>
+              </div>
+            </div>
+
+            <div class="table-wrap mt-md">
+              <table class="data-table" id="records-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Text Entry</th>
+                    <th>Category</th>
+                    <th>Source</th>
+                    <th>Pri</th>
+                    <th>Due Date</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="pagination-bar" id="records-pagination">
+              <span class="pagination-info" id="pagination-info">Showing 0 of 0</span>
+              <div class="pagination-controls">
+                <button class="btn btn-outline btn-sm" id="btn-prev-page" type="button">Previous</button>
+                <span id="page-indicator" class="page-indicator">Page 1 / 1</span>
+                <button class="btn btn-outline btn-sm" id="btn-next-page" type="button">Next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 5: ANALYTICS, CHARTS & THRESHOLD WARNINGS -->
+        <section class="view" id="view-analytics">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h4>Executive Summary &amp; Live Dataset Metrics</h4>
+                <p class="muted-text">Calculated dynamically from stored CSV/JSON records.</p>
+              </div>
+              <button class="btn btn-outline btn-sm" id="btn-refresh-analytics" type="button">Recalculate Metrics &amp; Charts</button>
+            </div>
+            <div class="kpi-row" id="analytics-kpi-row"></div>
+          </div>
+
+          <div class="card mt-md">
+            <div class="card-header">
+              <h4>Threshold Warning Indicators</h4>
+              <span class="badge badge-amber" id="warnings-count-badge">0 Flags</span>
+            </div>
+            <div id="warnings-list" class="warnings-grid"></div>
+          </div>
+
+          <div class="grid-two mt-md">
+            <div class="card">
+              <div class="card-header">
+                <h4>Category Breakdown Table</h4>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="analytics-category-table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Total</th>
+                      <th>Unique</th>
+                      <th>Duplicates</th>
+                      <th>Dup Rate</th>
+                      <th>Avg Pri</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4>Top Repeated Exact Texts</h4>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="analytics-top-dups-table">
+                  <thead>
+                    <tr>
+                      <th>Count</th>
+                      <th>Exact Text</th>
+                      <th>Record IDs</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-md">
+            <div class="card-header">
+              <h4>Matplotlib Visual Analytics</h4>
+              <span class="badge badge-teal">Generated by Python Matplotlib</span>
+            </div>
+            <div class="charts-grid">
+              <div class="chart-card">
+                <img id="chart-distribution" alt="Unique vs Duplicate Distribution Chart">
+              </div>
+              <div class="chart-card">
+                <img id="chart-categories" alt="Records and Duplicates by Category Chart">
+              </div>
+              <div class="chart-card chart-wide">
+                <img id="chart-trends" alt="Daily Submission and Duplication Trend Chart">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 6: BULK IMPORT & EXPORT REPORTS -->
+        <section class="view" id="view-io">
+          <div class="grid-two">
+            <div class="card">
+              <div class="card-header">
+                <h4>Bulk CSV Dataset Import</h4>
+                <span class="badge badge-blue">Row-by-Row Validation</span>
+              </div>
+              <p class="muted-text">
+                Upload any UTF-8 <code>.csv</code> file with required headers <code>text, category</code> (and optional <code>source, priority, due_date, notes</code>).
+                A sample test file with valid &amp; invalid rows is included at <code>data/sample_bulk_import_test.csv</code>.
+              </p>
+              <form id="bulk-import-form" novalidate>
+                <div class="form-group">
+                  <label for="csv-import-file">Select CSV File</label>
+                  <input type="file" id="csv-import-file" accept=".csv">
+                  <div class="field-error" id="err-import_file"></div>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="import-dry-run">
+                    <span>Dry Run (validate rows only without modifying storage)</span>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Validate &amp; Import CSV</button>
+              </form>
+
+              <div id="import-summary-box" class="hidden mt-md">
+                <div class="kpi-row" id="import-kpis"></div>
+                <div class="sub-section mt-sm">
+                  <h5>Row-by-Row Error Log</h5>
+                  <div class="table-wrap table-scroll">
+                    <table class="data-table" id="import-errors-table">
+                      <thead>
+                        <tr>
+                          <th>Row #</th>
+                          <th>Validation Errors</th>
+                          <th>Raw Row Preview</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4>Multi-Format Summary Export</h4>
+                <span class="badge badge-teal">MD · TXT · CSV</span>
+              </div>
+              <p class="muted-text">
+                Export structured summaries, threshold warnings, duplicate groups, and full analyzed records for external audit or reporting.
+              </p>
+              <div class="export-buttons-grid">
+                <div class="export-tile">
+                  <strong>Markdown Report (.md)</strong>
+                  <span>Formatted executive tables &amp; duplicate groups.</span>
+                  <div class="export-actions">
+                    <a class="btn btn-primary btn-sm" href="/api/export/markdown">Download .md</a>
+                    <button class="btn btn-outline btn-sm btn-preview-export" data-fmt="markdown" type="button">Preview</button>
+                  </div>
+                </div>
+                <div class="export-tile">
+                  <strong>Plain-Text Audit Log (.txt)</strong>
+                  <span>Fixed-width tabular log with column separators.</span>
+                  <div class="export-actions">
+                    <a class="btn btn-primary btn-sm" href="/api/export/txt">Download .txt</a>
+                    <button class="btn btn-outline btn-sm btn-preview-export" data-fmt="txt" type="button">Preview</button>
+                  </div>
+                </div>
+                <div class="export-tile">
+                  <strong>Standardized CSV (.csv)</strong>
+                  <span>Full dataset enriched with duplicate flags &amp; counts.</span>
+                  <div class="export-actions">
+                    <a class="btn btn-primary btn-sm" href="/api/export/csv">Download .csv</a>
+                    <button class="btn btn-outline btn-sm btn-preview-export" data-fmt="csv" type="button">Preview</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="export-preview-wrap" class="hidden mt-md">
+                <div class="preview-header">
+                  <strong id="export-preview-title">Preview</strong>
+                  <button class="btn btn-outline btn-sm" id="btn-close-preview" type="button">Close</button>
+                </div>
+                <pre id="export-preview-content" class="code-preview"></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 7: STORAGE HEALTH & THRESHOLD SETTINGS -->
+        <section class="view" id="view-settings">
+          <div class="grid-two">
+            <div class="card">
+              <div class="card-header">
+                <h4>Local CSV &amp; JSON Storage Health</h4>
+                <span class="badge badge-teal">Persistent Local Files</span>
+              </div>
+              <div id="storage-health-details" class="health-list"></div>
+              <div class="form-actions mt-md">
+                <button class="btn btn-secondary" id="btn-load-sample" type="button">Reload 40-Entry Sample Dataset</button>
+                <button class="btn btn-danger" id="btn-clear-storage" type="button">Clear Stored Records</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4>Threshold Warning Rules</h4>
+                <span class="badge badge-blue">Configurable Limits</span>
+              </div>
+              <form id="thresholds-form" novalidate>
+                <div id="thresholds-banner" class="form-banner hidden"></div>
+                <div class="form-group">
+                  <label for="th-dup-rate">Max Duplication Rate (%)</label>
+                  <input type="text" id="th-dup-rate" name="max_duplication_rate_pct">
+                  <div class="field-error" id="err-max_duplication_rate_pct"></div>
+                </div>
+                <div class="form-group">
+                  <label for="th-repeat-count">Min Repeat Anomaly Count</label>
+                  <input type="text" id="th-repeat-count" name="min_repeat_anomaly_count">
+                  <div class="field-error" id="err-min_repeat_anomaly_count"></div>
+                </div>
+                <div class="form-group">
+                  <label for="th-capacity">Max Records Capacity</label>
+                  <input type="text" id="th-capacity" name="max_records_capacity">
+                  <div class="field-error" id="err-max_records_capacity"></div>
+                </div>
+                <div class="form-group">
+                  <label for="th-short-len">Short Text Boundary Length (chars)</label>
+                  <input type="text" id="th-short-len" name="short_text_anomaly_len">
+                  <div class="field-error" id="err-short_text_anomaly_len"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Threshold Rules</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

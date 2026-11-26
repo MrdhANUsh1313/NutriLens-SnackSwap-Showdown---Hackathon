@@ -1,0 +1,6 @@
+{
+  "max_duplication_rate_pct": 25.0,
+  "min_repeat_anomaly_count": 3,
+  "max_records_capacity": 500,
+  "short_text_anomaly_len": 3
+}

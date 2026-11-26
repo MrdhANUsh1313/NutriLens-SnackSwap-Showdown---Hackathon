@@ -1,0 +1,11 @@
+text,category,source,priority,due_date,notes
+"alice.chen@example.com",Customer,Bulk Upload Demo,3,,Valid duplicate of existing entry
+"New quarterly sustainability metric summary",Document,Bulk Upload Demo,4,2026-12-22,Valid new unique record
+"   ",General,Bulk Upload Demo,2,,Invalid: blank whitespace text
+"Valid text with bad category!",Invalid@Cat!,Bulk Upload Demo,3,,Invalid: disallowed @ and ! in category
+"Out of range priority sample",Log,Bulk Upload Demo,99,,Invalid: priority 99 exceeds 1..5
+"Non-numeric priority test",Support,Bulk Upload Demo,high,,Invalid: priority is not an integer
+"Bad calendar date test",Finance,Bulk Upload Demo,3,2026-02-30,Invalid: Feb 30 does not exist
+"SKU-88412 | Wireless Ergonomic Mouse",Inventory,Bulk Upload Demo,2,2026-12-15,Valid exact duplicate
+"Batch import clean record #1",General,Bulk Upload Demo,1,,Valid priority 1 record
+"Batch import clean record #2",Email,Bulk Upload Demo,3,,Valid unique email category record
